@@ -1,0 +1,11 @@
+@startuml ドメインモデル
+
+hide circle
+
+class 商品
+商品 : ID
+商品 : 名前
+商品 : 価格
+note bottom: IDはユニーク\n名前は255文字以内\n価格は0円以上\nIDを元に検索される\n名前を元に検索される(部分一致)
+
+@enduml

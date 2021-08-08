@@ -1,0 +1,34 @@
+@startuml クラス図
+
+package presentation <<Rectangle>> {
+    package api <<Rectangle>> {
+        class router
+    }
+}
+
+package infrastructure <<Rectangle>> {
+    package db <<Rectangle>> {
+        class MySQL商品情報操作
+    }
+}
+
+package application <<Rectangle>> {
+    class 商品ユースケース
+}
+
+package domain <<Rectangle>> {
+    package service <<Rectangle>> {
+        Interface 商品情報操作
+    }
+
+    package model <<Rectangle>> {
+        class 商品
+    }
+}
+
+router --> 商品ユースケース
+商品ユースケース --> 商品情報操作
+商品情報操作 --> 商品
+MySQL商品情報操作 --|> 商品情報操作
+
+@enduml

@@ -1,0 +1,10 @@
+@startuml エンドユーザーユースケース図
+
+left to right direction
+
+actor お客さん
+rectangle Amazonっぽいサイト {
+    お客さん --> (商品情報を閲覧する)
+}
+
+@enduml
