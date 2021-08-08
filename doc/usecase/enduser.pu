@@ -1,9 +1,9 @@
-@startuml エンドユーザーユースケース図
+@startuml enduser
 
 left to right direction
 
 actor お客さん
-rectangle Amazonっぽいサイト {
+rectangle ECサイトの例 {
     お客さん --> (商品情報を閲覧する)
 }
 

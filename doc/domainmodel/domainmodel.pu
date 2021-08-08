@@ -1,4 +1,4 @@
-@startuml ドメインモデル
+@startuml domainmodel
 
 hide circle
 

@@ -1,4 +1,4 @@
-@startuml クラス図
+@startuml class
 
 package presentation <<Rectangle>> {
     package api <<Rectangle>> {
