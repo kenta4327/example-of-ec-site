@@ -30,7 +30,6 @@ paths:
               example:
                 - code: 40401
                   message: 指定されたIDに該当する商品が見つかりませんでした(ID:100)
-              
 components:
   schemas:
     Item:
