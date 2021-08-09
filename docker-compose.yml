@@ -4,6 +4,7 @@ services:
   db:
     build: ./docker/mysql
     platform: linux/x86_64
+    container_name: db
     volumes:
       - ./docker/mysql/data:/docker-entrypoint-initdb.d
     environment:

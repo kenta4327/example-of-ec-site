@@ -6,6 +6,16 @@
 docker-compose up -d
 ```
 
+## DBマイグレーション
+
+```Shell
+# 確認
+make db-migrate-dry-run
+
+# 実施
+make db-migrate
+```
+
 ## リンク
 
 ### Adminer
