@@ -1,0 +1,67 @@
+openapi: 3.0.0
+info:
+  title: ECサイトの例
+  version: 0.0.1
+paths:
+  /items/{item_id}:
+    get:
+      summary: 商品IDで検索
+      description: 指定したIDの商品情報を取得する
+      parameters:
+        - in: path
+          name: item_id
+          required: true
+          schema:
+            type: integer
+          description: 商品ID
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Item'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                - code: 40401
+                  message: 指定されたIDに該当する商品が見つかりませんでした(ID:100)
+              
+components:
+  schemas:
+    Item:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: 商品ID
+        name:
+          type: string
+          description: 商品名
+        price:
+          type: integer
+          description: 価格(税込み)
+      required:
+        - id
+        - name
+        - price
+      example:
+        - id: 1
+          name: 商品名
+          price: 100
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+          description: エラーコード
+        message:
+          type: string
+          description: エラーメッセージ
+      required:
+        - code
+        - message

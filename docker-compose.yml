@@ -21,3 +21,11 @@ services:
       - 8080:8080
     depends_on:
       - db
+  swagger-ui:
+    image: swaggerapi/swagger-ui:latest
+    volumes:
+      - ./doc/openapi/openapi.yaml:/usr/share/nginx/html/openapi.yaml
+    environment:
+      - API_URL=openapi.yaml
+    ports:
+      - 8081:8080
