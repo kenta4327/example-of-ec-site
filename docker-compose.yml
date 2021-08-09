@@ -4,24 +4,29 @@ services:
   db:
     build: ./docker/mysql
     platform: linux/x86_64
-    container_name: db
     volumes:
       - ./docker/mysql/data:/docker-entrypoint-initdb.d
     environment:
       - MYSQL_ROOT_PASSWORD=hoge
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-u", "root", "-phoge", "-h", "localhost"]
+      interval: 1s
+      retries: 30
   api:
     image: golang:1.16.7
     tty: true
     volumes:
       - ./src:/go/src
     depends_on:
-      - db
+      db:
+        condition: service_healthy
   adminer:
     image: adminer:latest
     ports:
       - 8080:8080
     depends_on:
-      - db
+      db:
+        condition: service_healthy
   swagger-ui:
     image: swaggerapi/swagger-ui:latest
     volumes:

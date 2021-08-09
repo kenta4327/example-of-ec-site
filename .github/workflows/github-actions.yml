@@ -1,0 +1,48 @@
+name: GitHub Actions
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  update-table-defenition:
+    runs-on: ubuntu-latest
+    steps:
+      - name: git-checkout
+        uses: actions/checkout@v2
+      - name: db-start
+        run: |
+          docker-compose up -d db
+      - name: wait-db-start
+        run: |
+          sleep 20
+      - name: db-migrate
+        run: |
+          docker run -v ${PWD}/schema:/schema --rm \
+          --net=example-of-ec-site_default \
+          diverse/mysqldef \
+          -u root \
+          -p hoge \
+          -h db \
+          --file=/schema/tables.sql \
+          sample
+      - name: update-table-defenition
+        run: |
+          rm -f ${PWD}/doc/schema/*
+          docker run -v ${PWD}/doc/schema:/schema --rm \
+          --net=example-of-ec-site_default \
+          k1low/tbls \
+          doc \
+          mysql://root:hoge@db:3306/sample \
+          /schema
+      - name: git-push
+        run: |
+          git add -N doc/schema
+          if ! git diff --exit-code --quiet
+          then
+            git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git config --local user.name "github-actions[bot]"
+            git add doc/schema
+            git commit -m "Update Table Defenition"
+            git push origin main
+          fi
