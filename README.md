@@ -30,4 +30,4 @@ make db-migrate
 
 ## GitHub Actions
 
-* mainブランチにプッシュされると schema/tables.sql の内容で doc/schema/ 内のテーブル定義を自動更新する (差分があるときだけ)
+* mainブランチにプッシュされると schema/tables.sql の内容で docs/schema/ 内のテーブル定義を自動更新する (差分があるときだけ)
