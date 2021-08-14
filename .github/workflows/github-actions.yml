@@ -28,8 +28,8 @@ jobs:
           sample
       - name: update-table-defenition
         run: |
-          rm -f ${PWD}/doc/schema/*
-          docker run -v ${PWD}/doc/schema:/schema --rm \
+          rm -f ${PWD}/docs/schema/*
+          docker run -v ${PWD}/docs/schema:/schema --rm \
           --net=example-of-ec-site_default \
           k1low/tbls \
           doc \
@@ -37,12 +37,12 @@ jobs:
           /schema
       - name: git-push
         run: |
-          git add -N doc/schema
+          git add -N docs/schema
           if ! git diff --exit-code --quiet
           then
             git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git config --local user.name "github-actions[bot]"
-            git add doc/schema
+            git add docs/schema
             git commit -m "Update Table Defenition"
             git push origin main
           fi
