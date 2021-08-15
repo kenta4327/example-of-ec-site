@@ -16,7 +16,7 @@ services:
     image: golang:1.16.7
     tty: true
     volumes:
-      - .:/go/src
+      - .:/go/src/github.com/kenta4327/example-of-ec-site
     depends_on:
       db:
         condition: service_healthy
