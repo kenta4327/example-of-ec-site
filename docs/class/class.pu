@@ -6,29 +6,45 @@ package presentation <<Rectangle>> {
     }
 }
 
+package test <<Rectangle>> {
+    package mock <<Rectangle>> {
+        class ItemRepositoryMock
+    }
+}
+
 package infrastructure <<Rectangle>> {
     package db <<Rectangle>> {
-        class MySQL商品情報操作
+        class ItemRepositoryDbMysql
     }
 }
 
 package application <<Rectangle>> {
-    class 商品ユースケース
+    package usecase <<Rectangle>> {
+        class BrowseItemUseCase
+        class BrowseItemUseCaseTest
+    }
+    package dto <<Rectangle>> {
+        class BrowseItemDto
+    }
 }
 
 package domain <<Rectangle>> {
-    package service <<Rectangle>> {
-        Interface 商品情報操作
+    package repository <<Rectangle>> {
+        Interface ItemRepository
     }
 
     package model <<Rectangle>> {
-        class 商品
+        class ItemEntity
     }
 }
 
-router --> 商品ユースケース
-商品ユースケース --> 商品
-商品 --> 商品情報操作
-MySQL商品情報操作 --|> 商品情報操作
+api --> usecase
+usecase --> repository
+usecase --> model
+usecase --> dto
+db --|> repository
+db --> model
+mock --|> repository
+mock --> model
 
 @enduml
