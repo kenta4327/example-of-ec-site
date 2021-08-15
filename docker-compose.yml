@@ -16,7 +16,7 @@ services:
     image: golang:1.16.7
     tty: true
     volumes:
-      - ./app:/go/src
+      - .:/go/src
     depends_on:
       db:
         condition: service_healthy
