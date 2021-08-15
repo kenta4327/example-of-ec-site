@@ -7,6 +7,9 @@ package presentation <<Rectangle>> {
 }
 
 package test <<Rectangle>> {
+    package usecase_test <<Rectangle>> {
+        class BrowseItemUseCaseTest
+    }
     package mock <<Rectangle>> {
         class ItemRepositoryMock
     }
@@ -21,7 +24,6 @@ package infrastructure <<Rectangle>> {
 package application <<Rectangle>> {
     package usecase <<Rectangle>> {
         class BrowseItemUseCase
-        class BrowseItemUseCaseTest
     }
     package dto <<Rectangle>> {
         class BrowseItemDto
@@ -39,12 +41,16 @@ package domain <<Rectangle>> {
 }
 
 api --> usecase
+db ---|> repository
+db ---> model
+usecase -> dto
 usecase --> repository
 usecase --> model
-usecase --> dto
-db --|> repository
-db --> model
-mock --|> repository
-mock --> model
+
+usecase_test -> mock
+usecase_test --> usecase
+usecase_test --> dto
+mock ---|> repository
+mock ---> model
 
 @enduml
