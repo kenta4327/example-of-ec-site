@@ -7,11 +7,11 @@ type ItemEntity struct {
 }
 
 func NewItemEntity(id int, name string, price int) *ItemEntity {
-	return &ItemEntity{
-		id:id,
-		name:  name,
-		price: price,
-	}
+return &ItemEntity{
+id:id,
+name:  name,
+price: price,
+}
 }
 
 func (itemEntity ItemEntity) Id() int {
