@@ -13,7 +13,9 @@ services:
       interval: 1s
       retries: 30
   api:
-    image: golang:1.16.7
+    build:
+      context: .
+      dockerfile: ./docker/golang/Dockerfile
     tty: true
     volumes:
       - .:/go/src/github.com/kenta4327/example-of-ec-site

@@ -18,6 +18,18 @@ make db-migrate-dry-run
 make db-migrate
 ```
 
+## テスト実施
+
+```Shell
+docker exec example-of-ec-site_api_1 go test ./app/test/usecase_test/
+```
+
+## mock_repository 作成
+
+```Shell
+docker exec example-of-ec-site_api_1 mockgen -source=app/domain/repository/item_repository.go -destination app/test/mock_repository/item_repository_mock.go
+```
+
 ## ローカル環境のリンク
 
 ### Adminer
@@ -31,3 +43,8 @@ make db-migrate
 ## GitHub Actions
 
 * mainブランチにプッシュされると schema/tables.sql の内容で docs/schema/ 内のテーブル定義を自動更新する (差分があるときだけ)
+
+## go.mod の説明
+
+* github.com/golang/mock
+  * 「domain/repository」にあるrepositoryインターフェースに対するmockを作成するために使用

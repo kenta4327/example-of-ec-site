@@ -10,7 +10,7 @@ package test <<Rectangle>> {
     package usecase_test <<Rectangle>> {
         class BrowseItemUseCaseTest
     }
-    package mock <<Rectangle>> {
+    package mock_repository <<Rectangle>> {
         class ItemRepositoryMock
     }
 }
@@ -46,11 +46,13 @@ db ---> model
 usecase -> dto
 usecase --> repository
 usecase --> model
+dto --> model
+repository -> model
 
-usecase_test -> mock
+usecase_test -> mock_repository
 usecase_test --> usecase
-usecase_test --> dto
-mock ---|> repository
-mock ---> model
+usecase_test ---> model
+mock_repository ---|> repository
+mock_repository ---> model
 
 @enduml
