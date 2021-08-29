@@ -1,13 +1,13 @@
 package model
 
 type ItemEntity struct {
-	id int
-	name string
+	id    int
+	name  string
 	price int
 }
 
 func NewItemEntity(id int, name string, price int) *ItemEntity {
-	return &ItemEntity {
+	return &ItemEntity{
 		id:    id,
 		name:  name,
 		price: price,
@@ -15,13 +15,13 @@ func NewItemEntity(id int, name string, price int) *ItemEntity {
 }
 
 func (itemEntity ItemEntity) Id() int {
-    return itemEntity.id
+	return itemEntity.id
 }
 
 func (itemEntity ItemEntity) Name() string {
-    return itemEntity.name
+	return itemEntity.name
 }
 
 func (itemEntity ItemEntity) Price() int {
-    return itemEntity.price
+	return itemEntity.price
 }

@@ -5,13 +5,13 @@ import (
 )
 
 type BrowseItemDto struct {
-	id int
-	name string
+	id    int
+	name  string
 	price int
 }
 
 func NewBrowseItemDto(itemEntity model.ItemEntity) *BrowseItemDto {
-	return &BrowseItemDto {
+	return &BrowseItemDto{
 		id:    itemEntity.Id(),
 		name:  itemEntity.Name(),
 		price: itemEntity.Price(),
@@ -19,13 +19,13 @@ func NewBrowseItemDto(itemEntity model.ItemEntity) *BrowseItemDto {
 }
 
 func (browseItemDto BrowseItemDto) Id() int {
-    return browseItemDto.id
+	return browseItemDto.id
 }
 
 func (browseItemDto BrowseItemDto) Name() string {
-    return browseItemDto.name
+	return browseItemDto.name
 }
 
 func (browseItemDto BrowseItemDto) Price() int {
-    return browseItemDto.price
+	return browseItemDto.price
 }
