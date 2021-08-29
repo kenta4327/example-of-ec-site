@@ -8,5 +8,7 @@ jobs:
     steps:
       - name: git-checkout
         uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
       - name: golangci-lint
         uses: reviewdog/action-golangci-lint@v2
