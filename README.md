@@ -42,7 +42,10 @@ docker exec example-of-ec-site_api_1 mockgen -source=app/domain/repository/item_
 
 ## GitHub Actions
 
-* mainブランチにプッシュされると schema/tables.sql の内容で docs/schema/ 内のテーブル定義を自動更新する (差分があるときだけ)
+* fmt-and-test
+  * PR時に「go fmt」と「go test」を実施する
+* update-table-defenition
+  * mainブランチにプッシュされると schema/tables.sql の内容で docs/schema/ 内のテーブル定義を自動更新する (差分があるときだけ)
 
 ## go.mod の説明
 
