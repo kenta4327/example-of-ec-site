@@ -8,7 +8,7 @@ type ItemEntity struct {
 
 func NewItemEntity(id int, name string, price int) *ItemEntity {
 	return &ItemEntity{
-		id:    id,
+		id:id,
 		name:  name,
 		price: price,
 	}
